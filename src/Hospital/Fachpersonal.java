@@ -4,8 +4,8 @@ public class Fachpersonal extends Angestellte implements Apotheke{
 
 
     @Override
-    public void getLohn() {
-        super.getLohn();
+    public double getLohn() {
+        return 0;
     }
 
     @Override

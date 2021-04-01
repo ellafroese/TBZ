@@ -1,10 +1,10 @@
 package Hospital;
 
-public class Arzt extends Fachpersonal implements Akten, Witz{
+public class Arzt extends Fachpersonal implements Akten, Witz, Lohn{
 
     @Override
-    public void getLohn() {
-        System.out.println("Der Arzt erhält Lohn");
+    public double getLohn() {
+        return 12000;
     }
 
     @Override
@@ -15,5 +15,10 @@ public class Arzt extends Fachpersonal implements Akten, Witz{
     @Override
     public void joke() {
 
+    }
+
+    @Override
+    public String lohnAuszahlen(){
+        return "Ein Arzt hat " + getLohn() + " verdient.";
     }
 }

@@ -1,9 +1,14 @@
 package Hospital;
 
-public class Buchhaltung extends Administation{
+public class Buchhaltung extends Administation implements Lohn{
 
     @Override
-    public void getLohn() {
-        System.out.println("Das Büro erhält Lohn");
+    public double getLohn() {
+        return 6000;
+    }
+
+    @Override
+    public String lohnAuszahlen(){
+        return "Eine Buchhaltungsperson hat " + getLohn() + " verdient.";
     }
 }

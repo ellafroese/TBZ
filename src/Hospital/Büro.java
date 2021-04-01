@@ -1,10 +1,15 @@
 package Hospital;
 
-public class Büro extends Administation implements Akten{
+public class Büro extends Administation implements Akten, Lohn{
 
     @Override
-    public void getLohn() {
-        System.out.println("Das Büro erhält Lohn.");
+    public double getLohn() {
+        return 4800;
+    }
+
+    @Override
+    public String lohnAuszahlen(){
+        return "Eine Büroperson hat " + getLohn() + " verdient.";
     }
 
     @Override

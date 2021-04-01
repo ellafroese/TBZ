@@ -1,9 +1,14 @@
 package Hospital;
 
-public class FaGe extends Fachpersonal{
+public class FaGe extends Fachpersonal implements Lohn{
 
     @Override
-    public void getLohn() {
-        super.getLohn();
+    public double getLohn() {
+       return 5500;
+    }
+
+    @Override
+    public String lohnAuszahlen(){
+        return "Eine FaGe hat " + getLohn() + " verdient.";
     }
 }
