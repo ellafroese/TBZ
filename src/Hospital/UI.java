@@ -10,29 +10,38 @@ public class UI {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Lohn> personal = new ArrayList<>();
 
-    public void start() {
-        //ui ausgeben
-        System.out.println("----------------------------------");
-        System.out.println("        Willkommen");
-        System.out.println("        Das Hospital-Tool");
-        System.out.println("----------------------------------");
-        System.out.println("");
-        System.out.println(" Was wollen Sie tun?");
-        System.out.println(" 1. Personal erfassen");
-        System.out.println(" 2. Zahltag Personal");
-        System.out.println("");
-        System.out.println("----------------------------------");
 
+    public void start () {
+        int option = 1;
 
-        int option = getInput(1, 2);
+        while(option != 0){
 
-        switch (option) {
-            case 1:
-                personalErfassen();
-                break;
-            case 2:
-                personalAuszahlen();
-                break;
+            //ui ausgeben
+            System.out.println("----------------------------------");
+            System.out.println("        Willkommen");
+            System.out.println("        Das Hospital-Tool");
+            System.out.println("----------------------------------");
+            System.out.println("");
+            System.out.println(" Was wollen Sie tun?");
+            System.out.println(" 1. Personal erfassen");
+            System.out.println(" 2. Zahltag Personal");
+            System.out.println(" 3. Gesammte Personalliste löschen");
+            System.out.println("");
+            System.out.println("----------------------------------");
+
+            option = getInput(1, 3);
+
+            switch (option) {
+                case 1:
+                    personalErfassen();
+                    break;
+                case 2:
+                    personalAuszahlen();
+                    break;
+                case 3:
+                    personallisteLöschen();
+                    break;
+            }
         }
     }
 
@@ -74,45 +83,31 @@ public class UI {
 
             option = getInput(1, 5);
 
-            Lohn a = new Arzt();
-            switch (option) {
-                case 1:
-                    a = new Arzt();
-                    System.out.println("Arzt");
-                    break;
-                case 2:
-                    a = new Buchhaltung();
-                    System.out.println("Buchhaltungperson");
-                    break;
-                case 3:
-                    a = new Büro();
-                    System.out.println("Büro");
-                    break;
-                case 4:
-                    a = new Empfang();
-                    System.out.println("Empfang");
-                    break;
-                case 5:
-                    a = new FaGe();
-                    System.out.println("FaGe");
-                    break;
-                case 0:
-                    break;
-            }
 
-            personal.add(a);
             if (option != 0) {
+                personal.add(Logik.getPersonalFromNumber(option));
                 System.out.println(" wurde hinzugefügt.");
             }
-
         }
     }
 
 
+
+    // hier werden die Personen ausgezahlt
     public void personalAuszahlen(){
-        for(Lohn l: personal){
-            System.out.println(l.lohnAuszahlen());
-        }
+
+
+        System.out.println("");
+        System.out.println("Insgesamt entstehen " + Logik.getSumOfSalaries(personal) + " CHF Kosten für das Lohnauszahlen der Mitarbeiter/innen.");
+
+    }
+
+
+    //hier wird die personalliste gelöscht
+    public void personallisteLöschen(){
+        personal.clear();
+        System.out.println("Die Personalliste wurde gelöscht.");
+
 
     }
 
