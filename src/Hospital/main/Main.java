@@ -1,4 +1,6 @@
-package Hospital;
+package Hospital.main;
+
+import Hospital.Starter;
 
 import java.util.ArrayList;
 

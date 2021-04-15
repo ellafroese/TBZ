@@ -1,6 +1,10 @@
-package Hospital;
+package Hospital.people;
 
-public class Arzt extends Fachpersonal implements Akten, Witz, Lohn{
+import Hospital.Interfaces.Akten;
+import Hospital.Interfaces.Lohn;
+import Hospital.Interfaces.Witz;
+
+public class Arzt extends Fachpersonal implements Akten, Witz, Lohn {
 
     @Override
     public double getLohn() {
@@ -21,4 +25,15 @@ public class Arzt extends Fachpersonal implements Akten, Witz, Lohn{
     public String lohnAuszahlen(){
         return "Ein Arzt hat " + getLohn() + " verdient.";
     }
+
+
+
+
+    @Override
+    public String toString(){
+        return "Arzt";
+    }
+
+
 }
+

@@ -1,6 +1,9 @@
-package Hospital;
+package Hospital.people;
 
-public class Patient implements Apotheke, Witz{
+import Hospital.Interfaces.Apotheke;
+import Hospital.Interfaces.Witz;
+
+public class Patient implements Apotheke, Witz {
     @Override
     public void buyMedis() {
         System.out.println("Der/Die Patient/in hat Medikamente gekauft.");

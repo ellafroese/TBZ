@@ -1,7 +1,9 @@
-package Hospital;
+package Hospital.test;
 
 
-import org.junit.Before;
+import Hospital.Interfaces.Lohn;
+import Hospital.Logik;
+import Hospital.people.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

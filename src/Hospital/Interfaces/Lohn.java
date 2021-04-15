@@ -1,4 +1,4 @@
-package Hospital;
+package Hospital.Interfaces;
 
 public interface Lohn {
     String lohnAuszahlen();

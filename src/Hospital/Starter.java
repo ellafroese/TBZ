@@ -1,5 +1,7 @@
 package Hospital;
 
+import Hospital.Interfaces.Lohn;
+
 import java.util.ArrayList;
 
 public class Starter {

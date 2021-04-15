@@ -1,4 +1,4 @@
-package Hospital;
+package Hospital.Exceptions;
 
 public class NoPersonnelException extends Exception{
 

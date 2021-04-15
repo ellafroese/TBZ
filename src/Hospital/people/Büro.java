@@ -1,6 +1,9 @@
-package Hospital;
+package Hospital.people;
 
-public class Büro extends Administation implements Akten, Lohn{
+import Hospital.Interfaces.Akten;
+import Hospital.Interfaces.Lohn;
+
+public class Büro extends Administation implements Akten, Lohn {
 
     @Override
     public double getLohn() {
@@ -15,5 +18,10 @@ public class Büro extends Administation implements Akten, Lohn{
     @Override
     public void getAkten() {
         System.out.println("Das Büro hat die Akten eingesehen.");
+    }
+
+    @Override
+    public String toString(){
+        return "Büro";
     }
 }

@@ -1,6 +1,8 @@
-package Hospital;
+package Hospital.people;
 
-public class FaGe extends Fachpersonal implements Lohn{
+import Hospital.Interfaces.Lohn;
+
+public class FaGe extends Fachpersonal implements Lohn {
 
     @Override
     public double getLohn() {
@@ -10,5 +12,10 @@ public class FaGe extends Fachpersonal implements Lohn{
     @Override
     public String lohnAuszahlen(){
         return "Eine FaGe hat " + getLohn() + " verdient.";
+    }
+
+    @Override
+    public String toString(){
+        return "FaGe";
     }
 }

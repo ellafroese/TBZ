@@ -1,4 +1,4 @@
-package Hospital;
+package Hospital.people;
 
 public class Administation extends Angestellte{
 

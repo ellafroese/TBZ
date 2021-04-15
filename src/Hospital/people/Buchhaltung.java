@@ -1,6 +1,8 @@
-package Hospital;
+package Hospital.people;
 
-public class Buchhaltung extends Administation implements Lohn{
+import Hospital.Interfaces.Lohn;
+
+public class Buchhaltung extends Administation implements Lohn {
 
     @Override
     public double getLohn() {
@@ -10,5 +12,10 @@ public class Buchhaltung extends Administation implements Lohn{
     @Override
     public String lohnAuszahlen(){
         return "Eine Buchhaltungsperson hat " + getLohn() + " verdient.";
+    }
+
+    @Override
+    public String toString(){
+        return "Buchhaltung";
     }
 }

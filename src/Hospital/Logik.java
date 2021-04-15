@@ -1,5 +1,8 @@
 package Hospital;
 
+import Hospital.Interfaces.Lohn;
+import Hospital.people.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

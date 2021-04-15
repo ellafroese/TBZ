@@ -1,6 +1,8 @@
-package Hospital;
+package Hospital.people;
 
-public class Fachpersonal extends Angestellte implements Apotheke{
+import Hospital.Interfaces.Apotheke;
+
+public class Fachpersonal extends Angestellte implements Apotheke {
 
 
     @Override

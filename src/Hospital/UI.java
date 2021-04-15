@@ -1,7 +1,8 @@
 package Hospital;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import Hospital.Exceptions.NoPersonnelException;
+import Hospital.Interfaces.Lohn;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,7 +20,6 @@ public class UI {
         int option = 1;
 
         while(option != 0){
-
             //ui ausgeben
             System.out.println("----------------------------------");
             System.out.println("        Willkommen");
@@ -31,10 +31,12 @@ public class UI {
             System.out.println(" 2. Zahltag Personal");
             System.out.println(" 3. Gesammte Personalliste löschen");
             System.out.println(" 4. File einlesen");
+            System.out.println(" 5. Liste ausgeben");
+            System.out.println(" 6. Einzelne Personen löschen");
             System.out.println("");
             System.out.println("----------------------------------");
 
-            option = getInput(1, 4);
+            option = getInput(1, 6);
 
             switch (option) {
                 case 1:
@@ -53,6 +55,11 @@ public class UI {
                 case 4:
                     readPersonalFile();
                     break;
+                case 5:
+                    showList();
+                    break;
+                case 6:
+                    deletePerson();
             }
         }
     }
@@ -130,6 +137,31 @@ public class UI {
         Logik.addPersonnelFromFile(starter.getPersonnelList());
         System.out.println("Das File wurde erfolgreich eingelesen.");
     }
+
+
+    public void  deletePerson(){
+        int max = showList();
+        System.out.println("Welche Person wollen Sie löschen?");
+        System.out.println("Geben Sie eine Nummer an.");
+
+        int option = getInput(1, max);
+        starter.getPersonnelList().remove(option - 1);
+        System.out.println("Die Person wurde erfolgreich gelöscht.");
+    }
+
+
+    public int showList(){
+        System.out.println("Folgende Personen sind in der Liste erfasst");
+        int i = 1;
+        for(Lohn l : starter.getPersonnelList()){
+            System.out.println(i +". " + l.toString());
+            i++;
+        }
+        return i;
+    }
+
+
+
 
 
 }
