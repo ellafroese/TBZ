@@ -1,6 +1,9 @@
 package Hospital;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Logik {
 
@@ -17,22 +20,41 @@ public class Logik {
     public static Lohn getPersonalFromNumber(int option){
         switch (option) {
             case 1:
-                System.out.println("Arzt");
+                System.out.print("Arzt ");
                 return new Arzt();
             case 2:
-                System.out.println("Buchhaltungperson");
+                System.out.print("Buchhaltungperson ");
                 return  new Buchhaltung();
             case 3:
-                System.out.println("Büro");
+                System.out.print("Büro ");
                 return new Büro();
             case 4:
-                System.out.println("Empfang");
+                System.out.print("Empfang ");
                 return new Empfang();
             case 5:
-                System.out.println("FaGe");
+                System.out.print("FaGe ");
                 return new FaGe();
         }
         return null;
+    }
+
+
+    public static void addPersonnelFromFile(ArrayList<Lohn> personal){
+        try{
+            File f = new File ("personnelFile.txt");
+            Scanner scanner = new Scanner(f);
+
+            while(scanner.hasNextInt()) {
+                Logik.addPersonFromNumber(personal, scanner.nextInt());
+            }
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void addPersonFromNumber(ArrayList<Lohn> personal, int number){
+        personal.add(getPersonalFromNumber(number));
+        System.out.println("wurde hinzugefügt.");
     }
 
 }

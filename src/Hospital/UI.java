@@ -8,7 +8,11 @@ import java.util.Scanner;
 public class UI {
 
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<Lohn> personal = new ArrayList<>();
+    Starter starter;
+
+    public UI(Starter starter){
+        this.starter = starter;
+    }
 
 
     public void start () {
@@ -26,20 +30,28 @@ public class UI {
             System.out.println(" 1. Personal erfassen");
             System.out.println(" 2. Zahltag Personal");
             System.out.println(" 3. Gesammte Personalliste löschen");
+            System.out.println(" 4. File einlesen");
             System.out.println("");
             System.out.println("----------------------------------");
 
-            option = getInput(1, 3);
+            option = getInput(1, 4);
 
             switch (option) {
                 case 1:
                     personalErfassen();
                     break;
                 case 2:
-                    personalAuszahlen();
+                    try {
+                        personalAuszahlen();
+                    } catch (NoPersonnelException e){
+                        System.out.println("Es ist kein Personal in der Liste ersfasst.");
+                    }
                     break;
                 case 3:
                     personallisteLöschen();
+                    break;
+                case 4:
+                    readPersonalFile();
                     break;
             }
         }
@@ -85,8 +97,7 @@ public class UI {
 
 
             if (option != 0) {
-                personal.add(Logik.getPersonalFromNumber(option));
-                System.out.println(" wurde hinzugefügt.");
+                Logik.addPersonFromNumber(starter.getPersonnelList(), option);
             }
         }
     }
@@ -94,21 +105,30 @@ public class UI {
 
 
     // hier werden die Personen ausgezahlt
-    public void personalAuszahlen(){
-
-
-        System.out.println("");
-        System.out.println("Insgesamt entstehen " + Logik.getSumOfSalaries(personal) + " CHF Kosten für das Lohnauszahlen der Mitarbeiter/innen.");
+    //throws ist wie try catch
+    public void personalAuszahlen() throws NoPersonnelException{
+        if(starter.getPersonnelList().size() > 0) {
+            System.out.println("");
+            System.out.println("Insgesamt entstehen " + Logik.getSumOfSalaries(starter.getPersonnelList()) + " CHF Kosten für das Lohnauszahlen der Mitarbeiter/innen.");
+        }else{
+            throw new NoPersonnelException("Es ist kein Personal eingetragen.");
+        }
 
     }
 
 
     //hier wird die personalliste gelöscht
     public void personallisteLöschen(){
-        personal.clear();
+        starter.getPersonnelList().clear();
         System.out.println("Die Personalliste wurde gelöscht.");
 
 
+    }
+
+
+    public void readPersonalFile(){
+        Logik.addPersonnelFromFile(starter.getPersonnelList());
+        System.out.println("Das File wurde erfolgreich eingelesen.");
     }
 
 
